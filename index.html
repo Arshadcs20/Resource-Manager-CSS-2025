@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS-2025 Resource Manager</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrQkTyx8Cfpc+h8s2fVZl1Lm4VBBrcw4C1t9jVXYykDXf02/Ud3gtpEN7te6K8RNT8fFwF4F1sgz6QW2ag=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <nav class="navbar">
+        <h1><i class="fas fa-book"></i> CSS-2025 Resource Manager</h1>
+        <div class="menu-toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="nav-links" id="nav-links">
+          <li>
+            <a href="#resource-form"
+              ><i class="fas fa-plus"></i> Add Resource</a
+            >
+          </li>
+          <li>
+            <a href="#category-filters"
+              ><i class="fas fa-filter"></i> Categories</a
+            >
+          </li>
+          <li>
+            <a href="#about"><i class="fas fa-info-circle"></i> About</a>
+          </li>
+          <li>
+            <a href="#footer"><i class="fas fa-envelope"></i> Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+      <h1 style="margin: auto; align-self: center">
+        <i class="fas fa-archive"></i> CSS-2025 Resource Manager
+      </h1>
+      <!-- Resource Form -->
+      <form id="resource-form">
+        <input
+          type="text"
+          id="title"
+          placeholder="Resource Title"
+          required
+          aria-label="Resource Title"
+        />
+        <input
+          type="url"
+          id="link"
+          placeholder="Resource URL"
+          required
+          aria-label="Resource URL"
+        />
+        <textarea
+          id="description"
+          placeholder="Resource Description"
+          required
+          aria-label="Resource Description"
+        ></textarea>
+
+        <!-- Category Selection with Option to Add Custom Category -->
+        <select id="category" required aria-label="Resource Category">
+          <option value="" disabled selected>Select Category</option>
+          <option value="FPSC">FPSC Official</option>
+          <option value="YouTube">YouTube</option>
+          <option value="Links">Links</option>
+          <option value="Syllabus">Syllabus</option>
+          <option value="Books">Books</option>
+          <option value="Online Courses">Online Courses</option>
+          <option value="Articles">Articles</option>
+          <option value="Notes">Notes</option>
+          <option value="Add New Category">Add New Category</option>
+        </select>
+
+        <!-- Custom Category Input (Hidden by Default) -->
+        <input
+          type="text"
+          id="custom-category"
+          placeholder="Enter Custom Category"
+          style="display: none; margin-bottom: 15px"
+        />
+
+        <button type="submit" aria-label="Add Resource">
+          <i class="fas fa-paper-plane"></i> Add Resource
+        </button>
+      </form>
+
+      <!-- Error Message Display -->
+      <div id="error-message" style="color: red; display: none"></div>
+
+      <!-- Success Message Display -->
+      <div id="success-message" style="color: green; display: none"></div>
+
+      <!-- Loading Spinner -->
+      <div id="loading-spinner" style="display: none">
+        <p>Loading...</p>
+      </div>
+
+      <!-- Category Filters -->
+      <div id="category-filters">
+        <h2><i class="fas fa-filter"></i> Categories</h2>
+        <div id="categories">
+          <!-- Dynamic categories will be added here -->
+        </div>
+      </div>
+
+      <!-- Resource List -->
+      <div id="resource-list"></div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+      <div class="about-container">
+        <h2>
+          <i class="fas fa-info-circle"></i> About CSS-2025 Resource Manager
+        </h2>
+        <p>
+          The CSS-2025 Resource Manager is designed to help students and
+          professionals stay organized with a curated collection of essential
+          resources. Whether you're looking for official FPSC links, YouTube
+          tutorials, syllabus materials, or recommended books and articles, this
+          platform allows you to categorize, filter, and manage your resources
+          all in one place.
+        </p>
+        <p>
+          Our goal is to empower users by providing an easy-to-use interface for
+          managing their study materials efficiently. We continue to enhance the
+          platform based on feedback and evolving user needs, making it a go-to
+          resource for aspiring civil servants and professionals alike.
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+      <p>&copy; 2024 CSS-2025 Resource Manager. All rights reserved.</p>
+      <p>
+        Developed by Mr.Robot || Contact: <i class="fas fa-phone"></i> 0326
+        7680746
+      </p>
+      <ul class="footer-links">
+        <li>
+          <a href="mailto:marshadcs20@gmail.com"
+            ><i class="fas fa-envelope"></i> Email Us</a
+          >
+        </li>
+        <li>
+          <a href="https://arshadcs20.github.io/" target="_blank"
+            ><i class="fas fa-briefcase"></i> Portfolio</a
+          >
+        </li>
+        <li>
+          <a href="https://www.example.com" target="_blank"
+            ><i class="fab fa-github"></i> GitHub</a
+          >
+        </li>
+      </ul>
+    </footer>
+
+    <!-- Firebase SDKs -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+      import { getDatabase } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyDa4RmxaYAT9JzWDZULj3uLNYIx4evCFVc",
+        authDomain: "css-2025-resource-manager.firebaseapp.com",
+        databaseURL:
+          "https://css-2025-resource-manager-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "css-2025-resource-manager",
+        storageBucket: "css-2025-resource-manager.appspot.com",
+        messagingSenderId: "724113827960",
+        appId: "1:724113827960:web:1884d4391bf0bd8c71e58d",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getDatabase(app);
+      window.db = db;
+    </script>
+
+    <!-- Import app.js as a Module -->
+    <script type="module" src="app.js"></script>
+
+    <script>
+      const mobileMenu = document.getElementById("mobile-menu");
+      const navLinks = document.getElementById("nav-links");
+
+      mobileMenu.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>
