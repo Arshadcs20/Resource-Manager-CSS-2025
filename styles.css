@@ -1,8 +1,17 @@
+/* Import Roboto Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
 /* Basic Reset */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+/* Apply smooth scrolling to the entire document */
+html,
+body {
+    scroll-behavior: smooth;
 }
 
 /* Body Styling */
@@ -11,8 +20,6 @@ body {
     background-color: #f9f9fb;
     color: #333;
     line-height: 1.6;
-    scroll-behavior: smooth;
-    /* Smooth scrolling enabled here */
 }
 
 /* Container Styling */
@@ -27,14 +34,18 @@ body {
 
 /* Header Styling */
 header {
-    background-color: #007bff;
-    padding: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem 2rem;
+    margin-bottom: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 header h1 {
-    color: white;
+    color: #007bff;
+    /* Changed from blue to a consistent shade */
     text-align: center;
     font-size: 28px;
     margin-bottom: 0;
@@ -42,35 +53,39 @@ header h1 {
 
 .navbar {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
 }
 
 .nav-links {
-    list-style: none;
     display: flex;
-    gap: 20px;
+    align-items: center;
+    /* Removed redundant text-decoration and color */
 }
 
 .nav-links li {
-    display: inline;
+    margin-right: 0.5rem;
+    list-style-type: none;
+    padding-right: 5px;
+    padding-left: 5px;
 }
 
 .nav-links a {
-    color: white;
     text-decoration: none;
-    font-size: 18px;
+    color: #2c3e50;
+    font-weight: 500;
     transition: color 0.3s ease;
+    display: flex;
+    margin-right: 4px;
+    align-items: center;
 }
 
-.nav-links a:hover {
-    color: #f8f9fa;
-}
-
-/* Smooth Scroll for anchor links */
-a {
-    scroll-behavior: smooth;
-    /* Applies smooth scrolling for anchor links */
+.nav-links a:hover,
+.nav-links a:focus {
+    color: #3498db;
+    outline: none;
 }
 
 /* Menu Toggle for Mobile */
@@ -83,8 +98,16 @@ a {
 .bar {
     height: 3px;
     width: 25px;
-    background-color: white;
+    background-color: #2c3e50;
+    /* Changed to match the nav-links color for better visibility */
     margin: 4px 0;
+    transition: background-color 0.3s ease;
+}
+
+.menu-toggle:hover .bar,
+.menu-toggle:focus .bar {
+    background-color: #3498db;
+    outline: none;
 }
 
 /* Form Styling */
@@ -130,8 +153,10 @@ form button {
     transition: background-color 0.3s ease;
 }
 
-form button:hover {
+form button:hover,
+form button:focus {
     background-color: #218838;
+    outline: none;
 }
 
 /* Category Filters Styling */
@@ -201,8 +226,10 @@ form button:hover {
     transition: color 0.3s ease;
 }
 
-.resource-item a:hover {
+.resource-item a:hover,
+.resource-item a:focus {
     color: #007bff;
+    outline: none;
 }
 
 .resource-item p {
@@ -233,8 +260,10 @@ form button:hover {
     transition: background-color 0.3s ease;
 }
 
-.resource-item button:hover {
+.resource-item button:hover,
+.resource-item button:focus {
     background-color: #c82333;
+    outline: none;
 }
 
 /* Custom Category Input Styling */
@@ -306,8 +335,10 @@ footer p {
     transition: color 0.3s ease;
 }
 
-.footer-links a:hover {
+.footer-links a:hover,
+.footer-links a:focus {
     color: #f8f9fa;
+    outline: none;
 }
 
 /* Responsive Styling */
@@ -331,13 +362,6 @@ footer p {
         display: flex;
         flex-direction: column;
         cursor: pointer;
-    }
-
-    .bar {
-        height: 3px;
-        width: 25px;
-        background-color: white;
-        margin: 4px 0;
     }
 
     .nav-links li {
